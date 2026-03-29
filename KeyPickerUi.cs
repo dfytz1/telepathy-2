@@ -84,7 +84,13 @@ namespace Telepathy
         Padding        = new Padding(10),
         DefaultSpacing = new Size(5, 6)
       };
-      layout.AddRow(findBox);
+      // Search field grows with window width; Apply stays at the right edge of the row.
+      layout.AddRow(new StackLayout
+      {
+        Orientation = Orientation.Horizontal,
+        Spacing     = 8,
+        Items       = { new StackLayoutItem(findBox, true), applyBtn }
+      });
       layout.AddRow(replaceBox);
       layout.BeginVertical(yscale: true);
       layout.AddRow(listBox);
@@ -95,7 +101,7 @@ namespace Telepathy
         Spacing     = 12,
         Items       = { inclSenders, inclReceivers, exactMatch }
       });
-      layout.AddSeparateRow(replaceBtn, null, cancelBtn, applyBtn);
+      layout.AddSeparateRow(replaceBtn, null, cancelBtn);
 
       var dialog = new Dialog
       {

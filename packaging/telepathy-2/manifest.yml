@@ -1,9 +1,10 @@
 name: telepathy-2
-version: 1.0.0
+version: 1.0.1
 authors:
   - GIA
 description: >
   Telepathy 2 — remote sender/receiver parameters that auto-wire by matching keys and group colors.
+  Cmd+T / Ctrl+T: telepathify outputs or select a group; repeat to cycle the view through the group.
   Compatible with Grasshopper definitions built using the original Telepathy plugin (same component GUIDs).
 url: "https://github.com/dfytz1/telepathy-2"
 icon: icon.png
