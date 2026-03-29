@@ -1,0 +1,15 @@
+name: telepathy-2
+version: 1.0.0
+authors:
+  - GIA
+description: >
+  Telepathy 2 — remote sender/receiver parameters that auto-wire by matching keys and group colors.
+  Compatible with Grasshopper definitions built using the original Telepathy plugin (same component GUIDs).
+url: "https://github.com/dfytz1/telepathy-2"
+icon: icon.png
+keywords:
+  - telepathy
+  - grasshopper
+  - params
+  - wireless
+  - guid:7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d

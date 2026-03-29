@@ -1,0 +1,10 @@
+bin/
+obj/
+packaging/stage/
+*.yak
+*.user
+*.suo
+.vs/
+.idea/
+*.DotSettings.user
+.DS_Store

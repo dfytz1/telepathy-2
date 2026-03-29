@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <!-- Select the framework(s) you wish to target.
+        Rhino 6: net45
+        Rhino 7: net48
+        Rhino 8 Windows: net48, net7.0, net7.0-windows, net7.0-windows10.0.22000.0, etc
+        Rhino 8 Mac: net7.0, net7.0-macos, net7.0-macos12.0, etc
+    -->
+    <TargetFrameworks>net7.0;net48</TargetFrameworks>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <TargetExt>.gha</TargetExt>
+    <NoWarn>NU1701</NoWarn>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Grasshopper menus use WinForms types; reference assemblies ship with WindowsDesktop for cross-compile on Mac. -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <EnableWindowsForms>true</EnableWindowsForms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <!-- Specifies information for Assembly and Yak -->
+    <Version>1.0.0</Version>
+    <Title>Telepathy 2</Title>
+    <Product>Telepathy 2</Product>
+    <Company>GIA</Company>
+    <Description>Telepathy 2 — remote sender/receiver parameters that auto-wire by matching keys (compatible with classic Telepathy .gh files).</Description>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.8.3" />
+    <PackageReference Include="Grasshopper" Version="8.27.26019.16021" ExcludeAssets="runtime" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources/sender.png" LogicalName="Telepathy.Resources.sender.png" />
+    <EmbeddedResource Include="Resources/receiver.png" LogicalName="Telepathy.Resources.receiver.png" />
+    <EmbeddedResource Include="Resources/explode.png" LogicalName="Telepathy.Resources.explode.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Script-only reference file — not compiled into the GHA -->
+    <Compile Remove="Scripts/**" />
+  </ItemGroup>
+
+</Project>
